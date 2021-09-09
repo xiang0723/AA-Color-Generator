@@ -33,7 +33,7 @@ E-mail:xiang666@gmail.com
       grid-template-columns: repeat(2,1fr);
     }
     #group_lists{
-      max-height: 600px;
+      overflow-y: auto;
     }
     .group{
       float: left;
@@ -67,7 +67,7 @@ E-mail:xiang666@gmail.com
 </head>
 <body>
   <h1>對比色色票產生器 v20210910</h1>
-  <div class="column_grid">
+  <div class="column_grid column_grid_top">
     <fieldset>
       <legend>設定</legend>
       <label for="textcolor">文字顏色 (HEX)</label>
@@ -97,7 +97,7 @@ E-mail:xiang666@gmail.com
     </fieldset>
   </div>
   <br>
-  <div class="column_grid">
+  <div class="column_grid column_grid_buttom">
     <fieldset>
       <legend>色票（以HEX值排序）</legend>
       <div id="group_lists">
@@ -165,6 +165,9 @@ $("body").on("click", "#generator", function(textcolor, groups, ratio_min, ratio
     $("#group_lists").html(_tempHTML);
     grouparray = [];
   }
+
+  //欄位高度
+  $("#group_lists").css("height", $(window).height() - $("h1").outerHeight() - $(".column_grid_top").outerHeight() - 100 + "px");
 });
 
 //統計總共常識了幾次運算 (contrastratiocheck() 的 while 迴圈次數)
